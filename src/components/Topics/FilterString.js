@@ -5,7 +5,7 @@ export default class FilterString extends Component {
     super();
 
     this.state = {
-      names: ['jack', 'abbe', 'elli', 'will'],
+      names: ['jack Doe', 'abbe Abinar', 'elli Elinor', 'will Stout'],
       userInput: '',
       filteredNames: []
     }
@@ -13,6 +13,18 @@ export default class FilterString extends Component {
   
   handleChange(val){
     this.setState({userInput: val});
+  }
+
+  filterNames(userInput) {
+    let names = this.state.names
+    let filteredNames = [];
+
+    for(let i = 0; i < names.length; i++){
+      if(names[i].includes(userInput)){
+        filteredNames.push(names[i]);
+      }
+    }
+    this.setState({filteredNames: filteredNames})
   }
   
   render() {
